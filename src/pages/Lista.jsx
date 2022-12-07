@@ -179,13 +179,13 @@ const Lista = () => {
               <div className='border rounded mt-4 shadow-lg bg-slate-100'>
                 <div className='flex justify-between border-b bg-slate-800 text-xl p-2 rounded-t text-slate-100'>
                   <p>{listaFiltrada.materia} </p>
-                  <p>{new Date(listaFiltrada.fecha).toLocaleDateString()} </p>
+                  <p>{new Date(listaFiltrada.fecha).toISOString().substring(0, 10)} </p>
                 </div>
                 <div>
-                  {listaFiltrada.asistencia.map((alumno) => {
+                  {listaFiltrada.asistencia.map((alumno, index) => {
                     const { nombre, apellido } = alumno.estudiante;
                     return (
-                      <li className='flex justify-between p-2 border-b'>
+                      <li key={index} className='flex justify-between p-2 border-b'>
                         <p> {`${nombre} ${apellido}`}</p>{" "}
                         <span>{alumno.presente ? "PRESENTE" : "AUSENTE"}</span>
                       </li>
