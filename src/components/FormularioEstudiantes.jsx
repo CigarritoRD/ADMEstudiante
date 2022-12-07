@@ -1,6 +1,8 @@
 import { useState } from "react";
+import Alerta from "./Alerta";
 
 const FormularioEstudiantes = ({ crearCuenta }) => {
+  const [alert, setAlert] = useState({});
   const INITIAL_DATA_FORM = {
     nombre: "",
     apellido: "",
@@ -23,7 +25,8 @@ const FormularioEstudiantes = ({ crearCuenta }) => {
   const validarFormulario = (dataForm) => {
     const { nombre, apellido } = dataForm;
     if ([nombre.trim(), apellido.trim()].includes(""))
-      return console.log("Ambos campos son obligatorios");
+      return setAlert({ mensaje: "Ambos campos son obligatorios", error: true });
+
     setDataform(INITIAL_DATA_FORM);
     return dataForm;
   };
@@ -45,6 +48,7 @@ const FormularioEstudiantes = ({ crearCuenta }) => {
           <h4 className='text-xl text-center  text-slate-200'>Nuevo estudiante</h4>
         </div>
         <form onSubmit={formSubmit} className='px-4 py-4' action=''>
+          {alert.mensaje && <Alerta alert={alert} />}
           <label className='font-bold text-lg text-slate-800' htmlFor='nombre '>
             Nombre
           </label>

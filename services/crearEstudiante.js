@@ -10,7 +10,7 @@ export const crearEstudiante = async (nuevoEstudiante) => {
     };
     const res = await fetch(`${API_URL}/api/estudiantes`, OPTIONS);
     const data = await res.json();
-    console.log(data);
+    console.log(res);
     return data;
   } catch (error) {
     console.log(error.message);

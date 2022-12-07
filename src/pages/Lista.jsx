@@ -44,12 +44,10 @@ const Lista = () => {
 
   const handleFecha = (e) => {
     setFechaABuscar((prev) => e.target.value);
-    console.log(fechaABuscar);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(e.target);
     await guardarLista(materia);
   };
 
@@ -85,9 +83,9 @@ const Lista = () => {
     setListaFiltrada(lista);
   };
   return (
-    <div className='grid grid-cols-2 px-4 gap-4 bg-slate-300 min-h-screen'>
+    <div className='grid md:grid-cols-2 px-4 gap-4 bg-slate-300 min-h-screen'>
       <div className='bg-slate-100 mt-4 rounded shadow-lg h-fit'>
-        <div className='p-4 bg-slate-800 text-slate-100 rounded-t flex justify-between items-center'>
+        <div className='p-4 bg-slate-800 text-slate-100 rounded-t flex justify-between items-center flex-col md:flex-row'>
           <p className='text-xl '>
             lista de hoy: <span className='font-bold'>{new Date().toLocaleDateString()}</span>
           </p>
@@ -109,7 +107,7 @@ const Lista = () => {
           {estudiantes.map((estudiante) => {
             return (
               <div key={estudiante?._id} className='p-2'>
-                <div className=' px-2 flex items-center justify-between  border-b pb-2'>
+                <div className=' px-2 flex items-center justify-between flex-col md:flex-row  border-b pb-2'>
                   <p className='uppercase font-bold'>
                     {estudiante.nombre + " " + estudiante.apellido}
                   </p>
